@@ -15,7 +15,6 @@
     <description>vanessa-cm</description>
     <properties>
         <java.version>1.8</java.version>
-        <lombok.version>1.18.20</lombok.version>
         <h2.version>1.4.200</h2.version>
         <springdoc.version>1.6.6</springdoc.version>
     </properties>
@@ -54,12 +53,6 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc.version}</version>
-        </dependency>
-
-        <!-- Lombok API -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
 
     </dependencies>
