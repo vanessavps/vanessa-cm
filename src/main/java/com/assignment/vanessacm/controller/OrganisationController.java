@@ -1,5 +1,6 @@
 package com.assignment.vanessacm.controller;
 
+import com.assignment.vanessacm.entity.Contact;
 import com.assignment.vanessacm.entity.Organisation;
 import com.assignment.vanessacm.service.OrganisationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,33 @@ public class OrganisationController {
             return new ResponseEntity<>(updatedOrganisation, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
     }
+
+    /*********************************
+     Manage organisation contacts
+     *********************************/
+    @PostMapping("/{id}/contact")
+    public ResponseEntity<Contact> addContact(@PathVariable Integer id, @RequestBody Contact contact) {
+        Contact newContact = organisationService.addContact(id, contact);
+        return new ResponseEntity<>(newContact, HttpStatus.CREATED);
+    }
+
+    // Manage organisation contacts
+    @GetMapping("/{id}/contact")
+    public ResponseEntity<List<Contact>> getContactsByOrganisationId(@PathVariable Integer id) {
+        List<Contact> contacts = organisationService.findContactsByOrganisationId(id);
+        if (contacts.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contacts, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}/contact/{contactId}")
+    public ResponseEntity<HttpStatus> deleteContactFromOrganisation(@PathVariable Integer id,
+                                                                    @PathVariable Integer contactId) {
+        organisationService.deleteContactFromOrganisation(id, contactId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }

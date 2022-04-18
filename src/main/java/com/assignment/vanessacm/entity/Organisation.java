@@ -108,12 +108,14 @@ public class Organisation {
 
     public void removeContact(Integer contactId) {
         Contact contact = this.contacts.stream()
-                                       .filter(c -> c.getId().equals(contactId))
+                                       .filter(c -> c.getId()
+                                                     .equals(contactId))
                                        .findFirst()
                                        .orElse(null);
         if (contact != null) {
             this.contacts.remove(contact);
-            contact.getOrganisations().remove(this);
+            contact.getOrganisations()
+                   .remove(this);
         }
 
     }

@@ -42,4 +42,8 @@ public class ContactService {
     public void deleteById(Integer id) {
         contactRepository.deleteById(id);
     }
+
+    public List<Contact> findContactsByOrganisationId(Integer organisationId) {
+        return contactRepository.findContactsByOrganisationsId(organisationId);
+    }
 }
