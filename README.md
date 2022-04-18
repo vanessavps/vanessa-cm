@@ -25,7 +25,7 @@ You can find Swagger API on http://localhost:8080/cm/swagger-ui/index.html
 ## Database
 
 ### Schema
-Schema can be found in the [ddl.sql]((database/ddl.sql)) file
+Schema can be found in the [ddl.sql](database/ddl.sql) file
 
 ### Application User
 During the implementation I created a user to be used by the application. It has limited permissions. 
