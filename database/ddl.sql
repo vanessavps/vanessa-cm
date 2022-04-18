@@ -11,25 +11,16 @@ CREATE TABLE IF NOT EXISTS contact
     phone VARCHAR(20)  DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS address
-(
-    id       INT AUTO_INCREMENT PRIMARY KEY,
-    address1 VARCHAR(120) DEFAULT NULL,
-    address2 VARCHAR(120) DEFAULT NULL,
-    suburb   VARCHAR(100) DEFAULT NULL,
-    city     VARCHAR(2)   DEFAULT NULL,
-    postcode VARCHAR(16)  DEFAULT NULL,
-    country  VARCHAR(2)   DEFAULT NULL
-);
-
 CREATE TABLE IF NOT EXISTS organisation
 (
-    id         INT AUTO_INCREMENT PRIMARY KEY,
-    name       VARCHAR(80) DEFAULT NULL,
-    url        VARCHAR(50) DEFAULT NULL,
-    address_id INT,
-    FOREIGN KEY (address_id)
-        REFERENCES address (id)
+    id       INT AUTO_INCREMENT PRIMARY KEY,
+    name     VARCHAR(80)  DEFAULT NULL,
+    url      VARCHAR(50)  DEFAULT NULL,
+    address  VARCHAR(120) DEFAULT NULL,
+    suburb   VARCHAR(100) DEFAULT NULL,
+    city     VARCHAR(30)  DEFAULT NULL,
+    postcode VARCHAR(16)  DEFAULT NULL,
+    country  VARCHAR(2)   DEFAULT NULL
 );
 
 
