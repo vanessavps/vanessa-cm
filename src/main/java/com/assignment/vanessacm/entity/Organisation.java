@@ -22,6 +22,7 @@ public class Organisation {
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "organisation_contacts", joinColumns = {
             @JoinColumn(name = "organisation_id")}, inverseJoinColumns = {@JoinColumn(name = "contact_id")})
+    @JsonIgnore
     private Set<Contact> contacts = new HashSet<>();
 
     public Organisation() {
