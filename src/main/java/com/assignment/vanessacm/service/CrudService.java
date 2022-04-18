@@ -1,6 +1,8 @@
 package com.assignment.vanessacm.service;
 
 import com.assignment.vanessacm.utils.ObjectCopyUtils;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -22,7 +24,13 @@ public abstract class CrudService<T> implements Crud<T> {
                               .orElse(null);
     }
 
-    public List<T> findAll() {
+    public List<T> findAll(Integer page, Integer elements) {
+        if (page != null && elements != null) {
+            Pageable pageWithElements = PageRequest.of(page, elements);
+            return this.repository.findAll(pageWithElements)
+                                  .getContent();
+        }
+
         return this.repository.findAll();
     }
 

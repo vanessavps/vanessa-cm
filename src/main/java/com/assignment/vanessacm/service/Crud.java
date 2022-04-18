@@ -12,7 +12,7 @@ public interface Crud<T> {
 
     T findById(Integer id);
 
-    List<T> findAll();
+    List<T> findAll(Integer page, Integer elements);
 
     void deleteById(Integer id);
 

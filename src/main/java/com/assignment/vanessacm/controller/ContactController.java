@@ -26,8 +26,9 @@ public class ContactController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Contact>> getAll() {
-        List<Contact> contacts = contactService.findAll();
+    public ResponseEntity<List<Contact>> getAll(@RequestParam(required = false) Integer page,
+                                                @RequestParam(required = false) Integer elements) {
+        List<Contact> contacts = contactService.findAll(page, elements);
         if (contacts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

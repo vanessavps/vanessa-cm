@@ -27,8 +27,9 @@ public class OrganisationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Organisation>> getAll() {
-        List<Organisation> organisations = organisationService.findAll();
+    public ResponseEntity<List<Organisation>> getAll(@RequestParam(required = false) Integer page,
+                                                     @RequestParam(required = false) Integer elements) {
+        List<Organisation> organisations = organisationService.findAll(page, elements);
         if (organisations.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
